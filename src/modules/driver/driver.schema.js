@@ -107,31 +107,45 @@ const DriverSchema = new mongoose.Schema(
             default: null
         },
 
+        lastLocationUpdatedAt: {
+    type: Date,
+    default: null
+},
+
+currentTripId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Trip",
+    default: null
+},
+
         currentLongitude: {
             type: Number,
             default: null
         },
 
         availability: {
-            type: String,
-            enum: [
-                "ONLINE",
-                "OFFLINE",
-                "BUSY"
-            ],
-            default: "OFFLINE"
-        },
+    type: String,
+    enum: [
+        "ONLINE",
+        "OFFLINE",
+        "BUSY",
+        "BREAK",
+        "ON_LEAVE"
+    ],
+    default: "OFFLINE"
+},
 
         status: {
             type: String,
             enum: [
-                "PENDING",
-                "DOCUMENT_VERIFICATION",
-                "ACTIVE",
-                "ON_TRIP",
-                "INACTIVE",
-                "BLOCKED"
-            ],
+    "PENDING",
+    "DOCUMENT_VERIFICATION",
+    "ACTIVE",
+    "ON_TRIP",
+    "SUSPENDED",
+    "INACTIVE",
+    "BLOCKED"
+],
             default: "PENDING"
         },
 

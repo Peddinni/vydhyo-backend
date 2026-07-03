@@ -71,6 +71,11 @@ const AmbulanceSchema = new mongoose.Schema(
             required: true
         },
 
+        nextServiceDate: {
+    type: Date,
+    default: null
+},
+
         color: {
             type: String,
             default: null
@@ -101,16 +106,39 @@ const AmbulanceSchema = new mongoose.Schema(
             default: true
         },
 
+        currentLatitude: {
+    type: Number,
+    default: null
+},
+
+currentLongitude: {
+    type: Number,
+    default: null
+},
+
+lastLocationUpdatedAt: {
+    type: Date,
+    default: null
+},
+
+currentTripId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Trip",
+    default: null
+},
+
         status: {
-            type: String,
-            enum: [
-                "AVAILABLE",
-                "ON_TRIP",
-                "MAINTENANCE",
-                "INACTIVE"
-            ],
-            default: "AVAILABLE"
-        },
+    type: String,
+    enum: [
+        "AVAILABLE",
+        "RESERVED",
+        "ON_TRIP",
+        "MAINTENANCE",
+        "OUT_OF_SERVICE",
+        "INACTIVE"
+    ],
+    default: "AVAILABLE"
+},
 
         remarks: {
             type: String,

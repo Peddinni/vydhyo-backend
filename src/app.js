@@ -7,6 +7,8 @@ const compression = require("compression");
 const morgan = require("morgan");
 const authRoutes = require("./modules/auth");
 const ambulanceRoutes = require("./modules/ambulance");
+const bookingRoutes = require("./modules/booking");
+const tripRoutes = require("./modules/trip");
 const app = express();
 
 app.use(cors());
@@ -36,5 +38,9 @@ app.use("/api/v1/partner", partnerRoutes);
 app.use("/api/v1/driver", driverRoutes);
 
 app.use("/api/v1/ambulance", ambulanceRoutes);
+
+app.use("/api/v1/booking", bookingRoutes);
+
+app.use("/api/v1/trip", tripRoutes);
 
 module.exports = app;
